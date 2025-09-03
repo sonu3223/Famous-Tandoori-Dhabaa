@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d71b94a9-e85e-48f3-96be-1a1dd47a66ca" />
 
 
 
@@ -8,8 +9,8 @@
 ---
 
 ## 🏠 About Us  
-At **Famous Tandoori Dhaba**, we bring authentic North Indian flavors to life — from juicy tandoori chicken to soft buttered naans.  
-We believe that good food is simple, soulful, and made with love.  
+- At **Famous Tandoori Dhaba**, we bring authentic North Indian flavors to life — from juicy tandoori chicken to soft buttered naans.  
+  We believe that good food is simple, soulful, and made with love.  
 
 **Why People Love Us**  
 - Authentic taste of the tandoor  
@@ -48,8 +49,8 @@ We believe that good food is simple, soulful, and made with love.
 
 # 🙌 Credits
 
-Images used from Google Images (for demo purpose)
+- Images used from Google Images (for demo purpose)
 
-Code support with ChatGPT
+- Code support with ChatGPT
 
-Hosted on GitHub Pages
+- Hosted on GitHub Pages
