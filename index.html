@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Famous Tandoori Dhaba | Authentic North Indian Flavors</title>
+  <meta name="description" content="स्वाद जो दिल छू ले — ताज़े ingredients, traditional recipes, और हर bite में प्यार।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Mukta:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f0f10; /* near-black */
+      --panel: #16171a; /* card bg */
+      --text: #e8e8ea; /* primary text */
+      --muted: #b9bbc6; /* secondary text */
+      --brand: #e43f5a; /* tandoori red */
+      --brand-2: #f7b32b; /* warm saffron */
+      --ok: #25a244; /* success */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+    a{color:inherit; text-decoration:none}
+
+    /* Header / Nav */
+    .nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(15,15,16,.85), rgba(15,15,16,.55));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav__inner{max-width:var(--maxw); margin:auto; display:flex; align-items:center; justify-content:space-between; padding:14px 18px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand__logo{width:40px; height:40px; border-radius:10px; background:radial-gradient(circle at 30% 30%, var(--brand-2), var(--brand)); box-shadow:0 6px 18px rgba(228,63,90,.4)}
+    .brand__name{font-weight:700; letter-spacing:.2px}
+    .chip{font-size:12px; padding:4px 10px; border-radius:999px; background:rgba(247,179,43,.12); color:var(--brand-2); border:1px solid rgba(247,179,43,.25)}
+
+    .nav__links{display:flex; gap:16px; align-items:center}
+    .nav__links a{padding:10px 12px; border-radius:12px; color:var(--muted)}
+    .nav__links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; background:var(--brand); color:white; font-weight:600; border:1px solid rgba(255,255,255,.08); box-shadow:0 8px 20px rgba(228,63,90,.35); cursor:pointer}
+    .btn:active{transform:translateY(1px)}
+
+    .hamb{display:none; width:44px; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); align-items:center; justify-content:center}
+    .hamb svg{width:22px; height:22px}
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero__wrap{max-width:var(--maxw); margin:auto; padding:90px 20px 120px; display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--brand-2); background:rgba(247,179,43,.12); border:1px solid rgba(247,179,43,.25); padding:6px 10px; border-radius:999px}
+    .headline{font-family:Mukta, Poppins, sans-serif; font-weight:800; font-size:48px; line-height:1.05; margin:12px 0}
+    .sub{color:var(--muted); max-width:48ch}
+    .hero__cta{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap}
+    .hero__img{position:relative; height:420px; border-radius:var(--radius-lg); background:url('https://images.unsplash.com/photo-1625944520613-63ab768f3da8?q=80&w=1600&auto=format&fit=crop') center/cover; box-shadow:var(--shadow)}
+    .hero__img:after{content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(228,63,90,.35), rgba(0,0,0,.0))}
+
+    /* Sections */
+    section{scroll-margin-top:80px}
+    .section{max-width:var(--maxw); margin:auto; padding:70px 20px}
+    .section h2{font-size:32px; margin:0 0 10px}
+    .section .lead{color:var(--muted)}
+
+    /* About */
+    .about{display:grid; grid-template-columns: 1.1fr 1fr; gap:28px; align-items:center}
+    .about__card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+
+    /* Menu */
+    .menu__grid{display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top:22px}
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:20px; overflow:hidden; box-shadow:var(--shadow)}
+    .card__img{height:150px; background:#222 center/cover no-repeat}
+    .card__body{padding:14px 16px}
+    .price{font-weight:700; color:var(--brand-2)}
+
+    /* Gallery */
+    .gallery__grid{display:grid; grid-template-columns:repeat(6, 1fr); gap:10px; margin-top:14px}
+    .gallery__grid .ph{padding-top:72%; border-radius:16px; background:#222 center/cover; border:1px solid rgba(255,255,255,.06)}
+
+    /* Reservation / Forms */
+    .forms{display:grid; grid-template-columns:1.1fr 1fr; gap:20px}
+    .form{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .field{display:flex; flex-direction:column; gap:8px; margin-bottom:12px}
+    .field input, .field textarea, .field select{background:#0c0d0f; border:1px solid rgba(255,255,255,.09); color:var(--text); border-radius:12px; padding:12px 12px; outline:none}
+    .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--brand)}
+    .form .btn{width:100%; justify-content:center}
+    .note{color:var(--muted); font-size:12px}
+
+    /* Testimonials */
+    .slider{position:relative; overflow:hidden; border-radius:var(--radius); background:var(--panel); border:1px solid rgba(255,255,255,.06)}
+    .slides{display:flex; transition:transform .5s ease}
+    .slide{flex:0 0 100%; padding:28px}
+    .quote{font-size:18px}
+    .who{margin-top:10px; color:var(--muted)}
+    .dots{display:flex; gap:8px; justify-content:center; padding:12px}
+    .dot{width:10px; height:10px; border-radius:999px; background:#373a40; border:1px solid rgba(255,255,255,.08); cursor:pointer}
+    .dot.active{background:var(--brand)}
+
+    /* Footer / Map */
+    .footer{padding:40px 20px; border-top:1px solid rgba(255,255,255,.06); background:#0c0d0f}
+    .footer__inner{max-width:var(--maxw); margin:auto; display:grid; grid-template-columns:1.2fr 1fr; gap:20px; align-items:center}
+    .map{width:100%; height:260px; border:0; border-radius:16px; filter:saturate(120%) contrast(95%)}
+    .copy{grid-column:1/-1; text-align:center; color:var(--muted); margin-top:16px}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .menu__grid{grid-template-columns: repeat(3,1fr)}
+      .gallery__grid{grid-template-columns:repeat(4, 1fr)}
+    }
+    @media (max-width: 820px){
+      .hero__wrap, .about, .forms, .footer__inner{grid-template-columns:1fr}
+      .hero__img{height:300px}
+      .menu__grid{grid-template-columns: repeat(2,1fr)}
+      .hamb{display:flex}
+      .nav__links{position:fixed; inset:70px 12px auto; background:rgba(22,23,26,.96); padding:12px; border:1px solid rgba(255,255,255,.08); border-radius:16px; display:none; flex-direction:column}
+      .nav__links.open{display:flex}
+    }
+    @media (max-width: 520px){
+      .headline{font-size:38px}
+      .gallery__grid{grid-template-columns:repeat(2, 1fr)}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="#home" class="brand">
+        <div class="brand__logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand__name">Famous Tandoori Dhaba</div>
+          <div class="chip">Authentic North Indian</div>
+        </div>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reservation">Reservation</a>
+        <a href="#contact">Contact</a>
+        <a href="#testimonials">Testimonials</a>
+      </nav>
+      <button class="hamb" id="hamb" aria-label="Open Menu" aria-controls="navLinks" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero__wrap">
+      <div>
+        <span class="badge">स्वाद जो दिल छू ले — Famous Tandoori Dhaba</span>
+        <h1 class="headline">Fresh ingredients • Traditional recipes • Love in every bite</h1>
+        <p class="sub">तंदूरी चिकन से लेकर घी लगी नरम रोटियों तक — हमारे हर पकवान में घर जैसा स्वाद।</p>
+        <div class="hero__cta">
+          <a href="#menu" class="btn">Explore Menu</a>
+          <a href="#reservation" class="btn" style="background:transparent; border-color:rgba(255,255,255,.16); box-shadow:none">Reserve a Table</a>
+        </div>
+      </div>
+      <div class="hero__img" role="img" aria-label="Tandoori and North Indian dishes"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="about">
+      <div>
+        <h2>About Us</h2>
+        <p class="lead">Tandoori Dhaba में हम परंपरागत उत्तर भारतीय स्वाद को आधुनिक तरीके से परोसते हैं — तंदूरी चिकन से लेकर घी में बनी रोटियों तक। हमारा मानना है कि अच्छा खाना सरल और सच्चा होता है।</p>
+      </div>
+      <div class="about__card">
+        <h3>Why People Love Us</h3>
+        <ul>
+          <li>🔥 तंदूर का असली स्वाद</li>
+          <li>🫓 ताज़ी रोटियाँ और नान</li>
+          <li>🥘 हर डिश में consistent quality</li>
+          <li>🧼 साफ़-सुथरा और family-friendly ambience</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="section">
+    <h2>Our Menu</h2>
+    <p class="lead">Handpicked favorites — शाकाहारी और मांसाहारी दोनों options।</p>
+    <div class="menu__grid">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1604908177522-96f863b4b2b3?q=80&w=1200&auto=format&fit=crop')" aria-label="Chicken Tandoori"></div>
+        <div class="card__body">
+          <h3>Chicken Tandoori</h3>
+          <p>Juicy chicken marinated with spices and roasted in tandoor.</p>
+          <div class="price">₹250</div>
+        </div>
+      </article>
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1604908554049-2151d0b14f85?q=80&w=1200&auto=format&fit=crop')" aria-label="Paneer Tikka"></div>
+        <div class="card__body">
+          <h3>Paneer Tikka</h3>
+          <p>Soft paneer cubes grilled with spices and colorful veggies.</p>
+          <div class="price">₹200</div>
+        </div>
+      </article>
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1617191518007-4d48c2a1d0fd?q=80&w=1200&auto=format&fit=crop')" aria-label="Butter Naan"></div>
+        <div class="card__body">
+          <h3>Butter Naan</h3>
+          <p>Soft and fluffy naan brushed with melted butter.</p>
+          <div class="price">₹50</div>
+        </div>
+      </article>
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="card__img" style="background-image:url('https://images.unsplash.com/photo-1567359781514-3b964e2c439b?q=80&w=1200&auto=format&fit=crop')" aria-label="Veg Biryani"></div>
+        <div class="card__body">
+          <h3>Veg Biryani</h3>
+          <p>Fragrant basmati rice cooked with seasonal vegetables and spices.</p>
+          <div class="price">₹180</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery__grid" aria-label="Photo gallery">
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1601050690113-99d64649d20b?q=80&w=1200&auto=format&fit=crop')"></div>
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop')"></div>
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1561715276-a2d087060f1a?q=80&w=1200&auto=format&fit=crop')"></div>
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1585238341301-cd6a0f26ca5d?q=80&w=1200&auto=format&fit=crop')"></div>
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1200&auto=format&fit=crop')"></div>
+      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1200&auto=format&fit=crop')"></div>
+    </div>
+  </section>
+
+  <!-- RESERVATION + CONTACT -->
+  <section id="reservation" class="section">
+    <h2>Reserve a Table</h2>
+    <p class="lead">Quick online booking — confirmation on the spot.</p>
+    <div class="forms">
+      <form class="form" id="reserveForm" aria-label="Reservation form">
+        <div class="field">
+          <label for="rName">Full Name</label>
+          <input id="rName" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="rPhone">Phone</label>
+          <input id="rPhone" name="phone" type="tel" placeholder="+91…" required pattern="[0-9+\- ]{8,}" />
+        </div>
+        <div class="field">
+          <label for="rGuests">Guests</label>
+          <select id="rGuests" name="guests" required>
+            <option value="" disabled selected>Select</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rDate">Date</label>
+          <input id="rDate" name="date" type="date" required />
+        </div>
+        <div class="field">
+          <label for="rTime">Time</label>
+          <input id="rTime" name="time" type="time" required />
+        </div>
+        <div class="field">
+          <label for="rNote">Note (optional)</label>
+          <textarea id="rNote" name="note" rows="3" placeholder="Occasion, preference, etc."></textarea>
+        </div>
+        <button class="btn" type="submit">Reserve Now</button>
+        <p id="reserveMsg" class="note" role="status" aria-live="polite"></p>
+      </form>
+
+      <form class="form" id="contactForm" aria-label="Contact form">
+        <h3>Contact Us</h3>
+        <div class="field">
+          <label for="cName">Your Name</label>
+          <input id="cName" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input id="cEmail" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message" rows="4" placeholder="How can we help?" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send Message</button>
+        <p id="contactMsg" class="note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Customer testimonials">
+      <div class="slides" id="slides">
+        <figure class="slide">
+          <blockquote class="quote">“The food was amazing! Loved the tandoori chicken and the ambience.”</blockquote>
+          <figcaption class="who">— Ramesh K.</figcaption>
+        </figure>
+        <figure class="slide">
+          <blockquote class="quote">“Best restaurant experience ever. Highly recommend Sonu's Dhaba.”</blockquote>
+          <figcaption class="who">— Priya S.</figcaption>
+        </figure>
+        <figure class="slide">
+          <blockquote class="quote">“Lovely staff and delicious food. Will visit again!”</blockquote>
+          <figcaption class="who">— Anil T.</figcaption>
+        </figure>
+      </div>
+      <div class="dots" id="dots" role="tablist" aria-label="Choose testimonial"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER / MAP -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <div>
+        <h3>Find Us</h3>
+        <p class="lead">Lakhimpur Kheri, Uttar Pradesh</p>
+        <p class="note">Contact: +91 98765 43210</p>
+      </div>
+      <iframe class="map" loading="lazy" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.334776883566!2d80.773!3d27.946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399e4741c1f3f77d%3A0x7c4cce0e72f9b2c!2sLakhimpur%20Kheri%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1693499999999">
+      </iframe>
+      <div class="copy">© <span id="year"></span> Famous Tandoori Dhaba — All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamb = document.getElementById('hamb');
+    const nav = document.getElementById('navLinks');
+    hamb?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Smooth close on link click (mobile)
+    document.querySelectorAll('.nav__links a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      hamb.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Testimonials slider
+    const slides = document.getElementById('slides');
+    const dots = document.getElementById('dots');
+    const total = slides.children.length;
+    let idx = 0, timer;
+    function renderDots(){
+      dots.innerHTML = '';
+      for(let i=0;i<total;i++){
+        const b = document.createElement('button');
+        b.className = 'dot' + (i===idx?' active':'');
+        b.setAttribute('aria-label', 'Show testimonial ' + (i+1));
+        b.addEventListener('click', ()=>{ idx=i; update(); restart(); });
+        dots.appendChild(b);
+      }
+    }
+    function update(){ slides.style.transform = `translateX(${-idx*100}%)`; renderDots(); }
+    function next(){ idx = (idx+1)%total; update(); }
+    function restart(){ clearInterval(timer); timer = setInterval(next, 4800); }
+    update(); restart();
+
+    // Simple form handlers (demo only)
+    function formMessage(el, msg, ok){ el.textContent = msg; el.style.color = ok ? 'var(--ok)' : 'var(--brand)'; }
+    document.getElementById('reserveForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const msg = document.getElementById('reserveMsg');
+      formMessage(msg, '🎉 Reservation received! We\'ll confirm shortly by phone.', true);
+      e.target.reset();
+    });
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const msg = document.getElementById('contactMsg');
+      formMessage(msg, '✅ Message sent! We\'ll reply on your email.', true);
+      e.target.reset();
+    });
+
+    // Set min date = today for reservations
+    const rDate = document.getElementById('rDate');
+    rDate.min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>
